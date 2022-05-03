@@ -11,6 +11,7 @@
 		AB9E81F42803802500764FBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E81F32803802500764FBA /* ContentView.swift */; };
 		AB9E81F62803802600764FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9E81F52803802600764FBA /* Assets.xcassets */; };
 		AB9E81F92803802600764FBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9E81F82803802600764FBA /* Preview Assets.xcassets */; };
+		ABB0991A2821814100EB003A /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB099192821814100EB003A /* ArtObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		AB9E81F32803802500764FBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB9E81F52803802600764FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9E81F82803802600764FBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ABB099192821814100EB003A /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		AB9E81F02803802500764FBA /* Find Art */ = {
 			isa = PBXGroup;
 			children = (
+				ABB099182821812B00EB003A /* Model */,
 				AB9E81F12803802500764FBA /* Find_ArtApp.swift */,
 				AB9E81F32803802500764FBA /* ContentView.swift */,
 				AB9E81F52803802600764FBA /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				AB9E81F82803802600764FBA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ABB099182821812B00EB003A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABB099192821814100EB003A /* ArtObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9E81F42803802500764FBA /* ContentView.swift in Sources */,
+				ABB0991A2821814100EB003A /* ArtObject.swift in Sources */,
 				AB9E81F22803802500764FBA /* Find_ArtApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
