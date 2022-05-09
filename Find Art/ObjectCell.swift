@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ObjectCell: View {
     
-    var object: ArtObject
+//    var object: ArtObject
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .firstTextBaseline) {
-                Text(object.title)
+                Text("object.title")
                     .multilineTextAlignment(.leading)
                 Spacer()
                 Button("More") {
@@ -23,12 +23,12 @@ struct ObjectCell: View {
                 .font(.callout)
             }
             .font(.title)
-            if object.isPublicDomain == false {
-                Image(systemName: "photo")
-                Text("Image is not Public Domain")
-                    .font(.subheadline)
-            } else {
-                AsyncImage(url: .init(string: object.primaryImage)) { phase in
+//            if object.isPublicDomain == false {
+//                Image(systemName: "photo")
+//                Text("Image is not Public Domain")
+//                    .font(.subheadline)
+//            } else {
+                AsyncImage(url: .init(string: "object.primaryImage")) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -41,19 +41,19 @@ struct ObjectCell: View {
                     @unknown default:
                         EmptyView()
                     }
-                }
+//                }
             }
-            Text("Artist: " + object.artistDisplayName)
-            Text("Culture: " + object.culture)
+            Text("Years ")
+            Text("Cities ")
         }
         .padding()
     }
 }
 
-struct ObjectCell_Previews: PreviewProvider {
-    static var previews: some View {
-        ObjectCell(object: .init(objectID: 11,
-                                 isPublicDomain: true, primaryImage: "https://images.metmuseum.org/CRDImages/as/web-large/79016.jpg",
-                                 objectName: "Bead", title: "Tubular Bead", culture: "Mexico", artistDisplayName: "Unknown", artistDisplayBio: ""))
-    }
-}
+//struct ObjectCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ObjectCell(object: .init(objectID: 11,
+//                                 isPublicDomain: true, primaryImage: "https://images.metmuseum.org/CRDImages/as/web-large/79016.jpg",
+//                                 objectName: "Bead", title: "Tubular Bead", culture: "Mexico", artistDisplayName: "Unknown", artistDisplayBio: ""))
+//    }
+//}

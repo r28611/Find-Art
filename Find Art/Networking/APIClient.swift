@@ -13,11 +13,11 @@ struct APIClient {
     private let decoder = JSONDecoder()
     private let queue = DispatchQueue(label: "APIClient", qos: .default, attributes: .concurrent)
     
-    func object(id: Int) -> AnyPublisher<ArtObject, NetworkError> {
+    func object(id: Int) -> AnyPublisher<Person, NetworkError> {
         return URLSession.shared
             .dataTaskPublisher(for: Method.object(id).url) .receive(on: queue)
             .map(\.data)
-            .decode(type: ArtObject.self, decoder: decoder)
+            .decode(type: Person.self, decoder: decoder)
             .mapError {
                 $0 is URLError
                 ? NetworkError.unreachableAddress(url: Method.object(id).url)
@@ -26,7 +26,7 @@ struct APIClient {
             .eraseToAnyPublisher()
     }
     
-    func mergedObjects(ids: [Int]) -> AnyPublisher<ArtObject, NetworkError> {
+    func mergedObjects(ids: [Int]) -> AnyPublisher<Person, NetworkError> {
         precondition(!ids.isEmpty)
         
         let initialPublisher = object(id: ids[0])

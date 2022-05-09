@@ -11,7 +11,7 @@
 		AB9E81F42803802500764FBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E81F32803802500764FBA /* ContentView.swift */; };
 		AB9E81F62803802600764FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9E81F52803802600764FBA /* Assets.xcassets */; };
 		AB9E81F92803802600764FBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9E81F82803802600764FBA /* Preview Assets.xcassets */; };
-		ABB0991A2821814100EB003A /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB099192821814100EB003A /* ArtObject.swift */; };
+		ABB0991A2821814100EB003A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB099192821814100EB003A /* Person.swift */; };
 		ABB0991E282181FE00EB003A /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0991D282181FE00EB003A /* Method.swift */; };
 		ABB099202821825100EB003A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0991F2821825100EB003A /* NetworkError.swift */; };
 		ABB099222821828E00EB003A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB099212821828E00EB003A /* APIClient.swift */; };
@@ -24,7 +24,7 @@
 		AB9E81F32803802500764FBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB9E81F52803802600764FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9E81F82803802600764FBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		ABB099192821814100EB003A /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
+		ABB099192821814100EB003A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		ABB0991D282181FE00EB003A /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		ABB0991F2821825100EB003A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		ABB099212821828E00EB003A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		ABB099182821812B00EB003A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABB099192821814100EB003A /* ArtObject.swift */,
+				ABB099192821814100EB003A /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 			files = (
 				ABB0991E282181FE00EB003A /* Method.swift in Sources */,
 				AB9E81F42803802500764FBA /* ContentView.swift in Sources */,
-				ABB0991A2821814100EB003A /* ArtObject.swift in Sources */,
+				ABB0991A2821814100EB003A /* Person.swift in Sources */,
 				AB9E81F22803802500764FBA /* Find_ArtApp.swift in Sources */,
 				ABB0992D28292A0700EB003A /* ObjectCell.swift in Sources */,
 				ABB099202821825100EB003A /* NetworkError.swift in Sources */,
