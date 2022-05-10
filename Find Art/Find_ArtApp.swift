@@ -11,7 +11,7 @@ import SwiftUI
 struct Find_ArtApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PersonsView(model: PersonsViewModel())
         }
     }
 }
