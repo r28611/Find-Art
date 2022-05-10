@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum NetworkError: LocalizedError {
+enum NetworkError: LocalizedError, Identifiable {
+    var id: String { localizedDescription }
+    
     case unreachableAddress(url: URL)
     case invalidResponse
     
