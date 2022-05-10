@@ -18,6 +18,7 @@
 		ABB0992D28292A0700EB003A /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0992C28292A0700EB003A /* ObjectCell.swift */; };
 		ABB0992F282A992900EB003A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0992E282A992900EB003A /* Page.swift */; };
 		ABB09931282A99C600EB003A /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB09930282A99C600EB003A /* PageInfo.swift */; };
+		ABB09935282AA71C00EB003A /* PersonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB09934282AA71C00EB003A /* PersonsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		ABB0992C28292A0700EB003A /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
 		ABB0992E282A992900EB003A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		ABB09930282A99C600EB003A /* PageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInfo.swift; sourceTree = "<group>"; };
+		ABB09934282AA71C00EB003A /* PersonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				ABB099182821812B00EB003A /* Model */,
 				AB9E81F12803802500764FBA /* Find_ArtApp.swift */,
 				AB9E81F32803802500764FBA /* ContentView.swift */,
+				ABB09934282AA71C00EB003A /* PersonsViewModel.swift */,
 				ABB0992C28292A0700EB003A /* ObjectCell.swift */,
 				AB9E81F52803802600764FBA /* Assets.xcassets */,
 				AB9E81F72803802600764FBA /* Preview Content */,
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB09935282AA71C00EB003A /* PersonsViewModel.swift in Sources */,
 				ABB0991E282181FE00EB003A /* Method.swift in Sources */,
 				AB9E81F42803802500764FBA /* ContentView.swift in Sources */,
 				ABB0992F282A992900EB003A /* Page.swift in Sources */,
