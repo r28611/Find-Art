@@ -16,6 +16,8 @@
 		ABB099202821825100EB003A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0991F2821825100EB003A /* NetworkError.swift */; };
 		ABB099222821828E00EB003A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB099212821828E00EB003A /* APIClient.swift */; };
 		ABB0992D28292A0700EB003A /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0992C28292A0700EB003A /* ObjectCell.swift */; };
+		ABB0992F282A992900EB003A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0992E282A992900EB003A /* Page.swift */; };
+		ABB09931282A99C600EB003A /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB09930282A99C600EB003A /* PageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		ABB0991F2821825100EB003A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		ABB099212821828E00EB003A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		ABB0992C28292A0700EB003A /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
+		ABB0992E282A992900EB003A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		ABB09930282A99C600EB003A /* PageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB099192821814100EB003A /* Person.swift */,
+				ABB0992E282A992900EB003A /* Page.swift */,
+				ABB09930282A99C600EB003A /* PageInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,8 +176,10 @@
 			files = (
 				ABB0991E282181FE00EB003A /* Method.swift in Sources */,
 				AB9E81F42803802500764FBA /* ContentView.swift in Sources */,
+				ABB0992F282A992900EB003A /* Page.swift in Sources */,
 				ABB0991A2821814100EB003A /* Person.swift in Sources */,
 				AB9E81F22803802500764FBA /* Find_ArtApp.swift in Sources */,
+				ABB09931282A99C600EB003A /* PageInfo.swift in Sources */,
 				ABB0992D28292A0700EB003A /* ObjectCell.swift in Sources */,
 				ABB099202821825100EB003A /* NetworkError.swift in Sources */,
 				ABB099222821828E00EB003A /* APIClient.swift in Sources */,
