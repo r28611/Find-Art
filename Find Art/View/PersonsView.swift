@@ -34,7 +34,6 @@ struct PersonsView<VM: ViewModelProtocol>: View {
                       dismissButton: .cancel())
             }
             .navigationBarTitle(Text("Persons"))
-                .foregroundColor(self.colorScheme == .light ? .blue : .orange)
             .onAppear {
                 model.fetchPersons()
             }
