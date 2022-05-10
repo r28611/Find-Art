@@ -8,15 +8,7 @@
 import Foundation
 
 enum Method {
-    static var baseURL: URLComponents {
-        var components = URLComponents()
-            components.scheme = "https"
-            components.host = "api.harvardartmuseums.org"
-            components.queryItems = [
-                URLQueryItem(name: "apikey", value: Method.apikey)
-            ]
-        return components
-    }
+    static let baseURL = URL(string: "https://api.harvardartmuseums.org/")!
     static let personPath = "person"
     static let apikey = "55b06756-30fe-4883-8cbc-f6a805f8b86d"
     
@@ -26,10 +18,12 @@ enum Method {
     var url: URL {
         switch self {
         case .page(let num):
-            var url = Method.baseURL
-            url.path = Method.personPath
-            url.queryItems = [URLQueryItem(name: "page", value: "\(num)")]
-            return url.url ?? Method.baseURL.url!
+            let urlString = Method.baseURL.appendingPathComponent(Method.personPath).absoluteString
+            var urlComps = URLComponents(string: urlString)
+            urlComps?.queryItems = [
+                URLQueryItem(name: "apikey", value: "\(Method.apikey)"),
+                URLQueryItem(name: "page", value: "\(num)")]
+            return urlComps?.url ?? Method.baseURL
         default:
             fatalError("URL for this case is undefined.")
         }

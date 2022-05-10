@@ -10,13 +10,13 @@ import Foundation
 public struct Page: Codable {
 
     public var info: PageInfo
-    public var results: [Person]
+    public var records: [Person]
 
     public init(
         info: PageInfo,
-        results: [Person]
+        records: [Person]
     ) {
         self.info = info
-        self.results = results
+        self.records = records
     }
 }

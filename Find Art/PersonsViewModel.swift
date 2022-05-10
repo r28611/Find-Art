@@ -34,7 +34,7 @@ class PersonsViewModel: ViewModelProtocol {
                     self.error = error
                 }
             }, receiveValue: { page in
-                self.persons.append(contentsOf: page.results)
+                self.persons.append(contentsOf: page.records)
                 self.currentPage += 1
                 self.error = nil
             })

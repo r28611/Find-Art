@@ -22,8 +22,8 @@ struct PersonsView<VM: ViewModelProtocol>: View {
             List {
                 Section() {
                         
-                    ForEach(self.model.persons) { character in
-                            ObjectCell()
+                    ForEach(self.model.persons) { person in
+                            PersonCell(person: person)
                         }
                     }
                     .padding(2)
