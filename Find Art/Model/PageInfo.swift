@@ -13,18 +13,21 @@ public struct PageInfo: Codable {
     public var pages: Int
     public var page: String?
     public var next: String?
+    public var prev: Int?
 
     public init(
         totalrecordsperquery: Int,
         totalrecords: Int,
         pages: Int,
         page: String?,
-        next: String?
+        next: String?,
+        prev: Int?
     ) {
         self.totalrecordsperquery = totalrecordsperquery
         self.totalrecords = totalrecords
         self.pages = pages
         self.page = page
         self.next = next
+        self.prev = prev
     }
 }

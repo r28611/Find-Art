@@ -8,14 +8,28 @@
 import Foundation
 
 enum Method {
-    static let baseURL = URL(string: "https://colectionapi.metmuseum.org/public/collection/v1/")!
+    static var baseURL: URLComponents {
+        var components = URLComponents()
+            components.scheme = "https"
+            components.host = "api.harvardartmuseums.org"
+            components.queryItems = [
+                URLQueryItem(name: "apikey", value: Method.apikey)
+            ]
+        return components
+    }
+    static let personPath = "person"
+    static let apikey = "55b06756-30fe-4883-8cbc-f6a805f8b86d"
     
-    case object(Int)
+    case page(Int)
+    case person(Int)
     
     var url: URL {
         switch self {
-        case .object(let id):
-            return Method.baseURL.appendingPathComponent("objects/\(id)")
+        case .page(let num):
+            var url = Method.baseURL
+            url.path = Method.personPath
+            url.queryItems = [URLQueryItem(name: "page", value: "\(num)")]
+            return url.url ?? Method.baseURL.url!
         default:
             fatalError("URL for this case is undefined.")
         }
