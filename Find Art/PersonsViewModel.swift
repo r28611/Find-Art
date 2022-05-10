@@ -12,6 +12,8 @@ protocol ViewModelProtocol: ObservableObject {
     
     var persons: [Person] { get }
     var error: NetworkError? { get set }
+    var membersListFull: Bool { get set }
+    func loadMoreContent()
     func fetchPersons()
     
 }
@@ -23,8 +25,17 @@ class PersonsViewModel: ViewModelProtocol {
     
     private var apiClient = APIClient()
     private var currentPage: Int = 0
+    var membersListFull = false
     private var subscriptions: Set<AnyCancellable> = []
     
+    //MARK: - PAGINATION
+    func loadMoreContent(){
+        if !membersListFull {
+            fetchPersons()
+        }
+    }
+    
+    //MARK: - API CALL
     func fetchPersons() {
         apiClient
             .page(num: currentPage + 1)
@@ -37,6 +48,9 @@ class PersonsViewModel: ViewModelProtocol {
                 self.persons.append(contentsOf: page.records)
                 self.currentPage += 1
                 self.error = nil
+                if page.records.count < page.info.totalrecordsperquery {
+                    self.membersListFull = true
+                }
             })
             .store(in: &subscriptions)
     }
