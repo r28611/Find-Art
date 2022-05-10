@@ -21,12 +21,16 @@ struct PersonsView<VM: ViewModelProtocol>: View {
         NavigationView {
             List {
                 Section() {
-                        
                     ForEach(self.model.persons) { person in
-                            PersonCell(person: person)
-                        }
+                        PersonCell(person: person)
+                            .onAppear {
+                                if person == model.persons.last {
+                                    model.loadMoreContent()
+                                }
+                            }
                     }
-                    .padding(2)
+                }
+                .padding(2)
             }
             .alert(item: self.$model.error) { error in
                 Alert(title: Text("Network error"),
