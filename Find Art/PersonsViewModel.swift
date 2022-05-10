@@ -16,7 +16,7 @@ protocol ViewModelProtocol: ObservableObject {
     
 }
 
-class CharactersViewModel: ViewModelProtocol {
+class PersonsViewModel: ViewModelProtocol {
     
     @Published var persons: [Person] = []
     @Published var error: NetworkError? = nil

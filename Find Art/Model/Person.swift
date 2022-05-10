@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct Person: Codable {
+public struct Person: Codable, Identifiable {
+    public var id: Int
     let displayname: String
     let displaydate: String?
     let birthplace: String?
@@ -16,6 +17,6 @@ public struct Person: Codable {
     let url: String
 
     enum CodingKeys: String, CodingKey {
-        case displaydate, url, birthplace, culture, displayname, deathplace
+        case id, displaydate, url, birthplace, culture, displayname, deathplace
     }
 }
