@@ -34,10 +34,16 @@ struct PersonsView<VM: ViewModelProtocol>: View {
                 }
                 .padding(2)
             }
-            .sheet(isPresented: self.$filterSettingsIsPresented) {
+            .sheet(isPresented: self.$filterSettingsIsPresented,
+                   onDismiss: {
+                if model.persons.isEmpty {
+                    model.fetchPersons()
+                }
+            },
+                   content: {
                 FilterSettingsView()
                     .environmentObject(self.filter)
-            }
+            })
             .alert(item: self.$model.error) { error in
                 Alert(title: Text("Network error"),
                       message: Text(error.localizedDescription),
@@ -49,14 +55,9 @@ struct PersonsView<VM: ViewModelProtocol>: View {
                 self.filterSettingsIsPresented = true
             })
             .onAppear {
-                if model.filterTags.isEmpty {
                 model.fetchPersons()
-                } else {
-                    model.currentPage = 0
-                    model.persons = []
-                    model.fetchPersons()
-                }
             }
+            .refreshable { model.fetchPersons() }
         }
     }
 }

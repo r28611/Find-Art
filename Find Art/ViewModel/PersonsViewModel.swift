@@ -24,7 +24,12 @@ class PersonsViewModel: ViewModelProtocol {
     
     @Published var persons: [Person] = []
     @Published var error: NetworkError? = nil
-    @Published var filterTags: [CultureTag] = []
+    @Published var filterTags: [CultureTag] = [] {
+        didSet {
+            currentPage = 0
+            persons = []
+        }
+    }
     
     private var apiClient = APIClient()
     var currentPage: Int = 0
