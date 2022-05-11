@@ -17,7 +17,7 @@ struct FilterSettingsView: View {
             List {
                 ForEach(CultureTag.allCases) { tag in
                     Button(action: {
-                        self.changeTagState(tag)
+                        self.filter.changeTagState(tag)
                     }, label: {
                         HStack {
                             if self.filter.tags.contains(tag) {
@@ -35,12 +35,6 @@ struct FilterSettingsView: View {
                 presentationMode.wrappedValue.dismiss()
             })
         }
-    }
-    
-    func changeTagState(_ tag: CultureTag) {
-        filter.tags.contains(tag)
-        ? filter.tags.removeAll(where: { $0 == tag })
-        : filter.tags.append(tag)
     }
 }
 

@@ -55,11 +55,13 @@ class PersonsViewModel: ViewModelProtocol {
         apiClient
             .page(num: currentPage + 1)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
                 if case .failure(let error) = completion {
                     self.error = error
                 }
-            }, receiveValue: { page in
+            }, receiveValue: { [weak self] page in
+                guard let self = self else { return }
                 self.allPersons.append(contentsOf: page.records)
                 self.currentPage += 1
                 self.error = nil
@@ -72,9 +74,26 @@ class PersonsViewModel: ViewModelProtocol {
     
     //MARK: - FILTER
     private func checkMatching(person: Person, for tag: CultureTag) -> Bool {
-        switch tag {
-        case .japanese, .french, .dutch, .russian, .spanish:
+        
+            apiClient
+                .page(num: currentPage + 1)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { [weak self] completion in
+                    guard let self = self else { return }
+                    if case .failure(let error) = completion {
+                        self.error = error
+                    }
+                }, receiveValue: { [weak self] page in
+                    guard let self = self else { return }
+                    self.allPersons.append(contentsOf: page.records)
+                    self.currentPage += 1
+                    self.error = nil
+                    if page.records.count < page.info.totalrecordsperquery {
+                        self.membersListFull = true
+                    }
+                })
+                .store(in: &subscriptions)
+            
             return person.culture?.lowercased() == tag.rawValue.lowercased()
-        }
     }
 }

@@ -23,4 +23,10 @@ final class Filter: ObservableObject {
     
     init() {}
     
+    func changeTagState(_ tag: CultureTag) {
+        tags.contains(tag)
+        ? tags.removeAll(where: { $0 == tag })
+        : tags.append(tag)
+    }
+    
 }
