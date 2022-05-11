@@ -11,20 +11,12 @@ import Combine
 @main
 struct Find_ArtApp: App {
     
-    private var subscriptions = Set<AnyCancellable>()
-    let viewModel = PersonsViewModel()
-    let filter = Filter()
-    
-    init() {
-        filter.$tags
-            .assign(to: \.filterTags, on: viewModel)
-            .store(in: &subscriptions)
-    }
+    let container = DIContainer()
     
     var body: some Scene {
         WindowGroup {
-            PersonsView(model: viewModel)
-                .environmentObject(filter)
+            PersonsView(model: container.personsViewModel)
+                .environmentObject(container.filter)
         }
     }
 }
