@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct Find_ArtApp: App {
+    
+    let container = DIContainer()
+    
     var body: some Scene {
         WindowGroup {
-            PersonsView(model: PersonsViewModel())
+            PersonsView(model: container.personsViewModel)
+                .environmentObject(container.filter)
         }
     }
 }

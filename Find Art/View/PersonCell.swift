@@ -22,25 +22,18 @@ struct PersonCell: View {
                 }
                 .font(.callout)
             }
-            .font(.title)
-            Image(systemName: "photo")
-//                AsyncImage(url: .init(string: "object.primaryImage")) { phase in
-//                    switch phase {
-//                    case .empty:
-//                        ProgressView()
-//                    case .success(let image):
-//                        image.resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(maxWidth: 300, maxHeight: 100)
-//                    case .failure:
-//                        Image(systemName: "photo")
-//                    @unknown default:
-//                        EmptyView()
-//                    }
-//                }
-//            }
-            Text(person.displaydate ?? "unknown")
-            Text(person.culture ?? "unknown")
+            .font(.title3)
+            VStack(alignment: .leading) {
+                Text(person.displaydate ?? "years of life unknown")
+                if let bplace = person.birthplace,
+                   let dplace = person.deathplace {
+                    Text("\(bplace) - \(dplace)")
+                }
+                if let culture = person.culture {
+                    Text("\(culture)")
+                }
+            }
+            .font(.footnote)
         }
         .padding()
     }

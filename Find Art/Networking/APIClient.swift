@@ -13,9 +13,12 @@ struct APIClient {
     private let decoder = JSONDecoder()
     private let queue = DispatchQueue(label: "APIClient", qos: .default, attributes: .concurrent)
     
-    func page(num: Int) -> AnyPublisher<Page, NetworkError> {
-        URLSession.shared
-            .dataTaskPublisher(for: Method.page(num).url)
+    func page(num: Int, q: String? = nil) -> AnyPublisher<Page, NetworkError> {
+        
+        let url = q != nil ? Method.personFiltered(q!, num).url : Method.page(num).url
+        
+         return URLSession.shared
+            .dataTaskPublisher(for: url)
             .receive(on: DispatchQueue.main)
             .map(\.data)
             .decode(type: Page.self, decoder: decoder)
