@@ -12,6 +12,7 @@ protocol ViewModelProtocol: ObservableObject {
     
     var persons: [Person] { get }
     var error: NetworkError? { get set }
+    var filterTags: [CultureTag]  { get set }
     var membersListFull: Bool { get set }
     func loadMoreContent()
     func fetchPersons()
@@ -20,13 +21,27 @@ protocol ViewModelProtocol: ObservableObject {
 
 class PersonsViewModel: ViewModelProtocol {
     
-    @Published var persons: [Person] = []
+    @Published private var allPersons: [Person] = []
     @Published var error: NetworkError? = nil
+    @Published var filterTags: [CultureTag] = []
     
     private var apiClient = APIClient()
     private var currentPage: Int = 0
     var membersListFull = false
     private var subscriptions: Set<AnyCancellable> = []
+    
+    var persons: [Person] {
+        guard !filterTags.isEmpty else {
+            return allPersons
+        }
+        
+        return allPersons
+            .filter { (person) -> Bool in
+                return filterTags.reduce(false) { (isMatch, tag) -> Bool in
+                    self.checkMatching(person: person, for: tag)
+                }
+            }
+    }
     
     //MARK: - PAGINATION
     func loadMoreContent(){
@@ -45,7 +60,7 @@ class PersonsViewModel: ViewModelProtocol {
                     self.error = error
                 }
             }, receiveValue: { page in
-                self.persons.append(contentsOf: page.records)
+                self.allPersons.append(contentsOf: page.records)
                 self.currentPage += 1
                 self.error = nil
                 if page.records.count < page.info.totalrecordsperquery {
@@ -53,5 +68,13 @@ class PersonsViewModel: ViewModelProtocol {
                 }
             })
             .store(in: &subscriptions)
+    }
+    
+    //MARK: - FILTER
+    private func checkMatching(person: Person, for tag: CultureTag) -> Bool {
+        switch tag {
+        case .japanese, .french, .dutch, .russian, .spanish:
+            return person.culture?.lowercased() == tag.rawValue.lowercased()
+        }
     }
 }

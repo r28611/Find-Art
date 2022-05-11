@@ -40,7 +40,7 @@
 		ABB09930282A99C600EB003A /* PageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInfo.swift; sourceTree = "<group>"; };
 		ABB09934282AA71C00EB003A /* PersonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewModel.swift; sourceTree = "<group>"; };
 		ABB09936282AA8A200EB003A /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
-		ABB0993A282BCEB400EB003A /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = "Find Art/Filter.swift"; sourceTree = SOURCE_ROOT; };
+		ABB0993A282BCEB400EB003A /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = "Find Art/ViewModel/Filter.swift"; sourceTree = SOURCE_ROOT; };
 		ABB0993C282BCEE700EB003A /* CultureTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultureTag.swift; sourceTree = "<group>"; };
 		ABB0993E282BD1ED00EB003A /* FilterSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,9 +79,7 @@
 				ABB099182821812B00EB003A /* Model */,
 				ABB09939282AE0FE00EB003A /* App */,
 				ABB09938282ACF9200EB003A /* View */,
-				ABB09934282AA71C00EB003A /* PersonsViewModel.swift */,
-				ABB0993A282BCEB400EB003A /* Filter.swift */,
-				ABB0993E282BD1ED00EB003A /* FilterSettingsView.swift */,
+				ABB09940282BD62700EB003A /* ViewModel */,
 				AB9E81F52803802600764FBA /* Assets.xcassets */,
 				AB9E81F72803802600764FBA /* Preview Content */,
 			);
@@ -120,6 +118,7 @@
 		ABB09938282ACF9200EB003A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ABB0993E282BD1ED00EB003A /* FilterSettingsView.swift */,
 				AB9E81F32803802500764FBA /* LoginView.swift */,
 				ABB09936282AA8A200EB003A /* PersonsView.swift */,
 				ABB0992C28292A0700EB003A /* PersonCell.swift */,
@@ -133,6 +132,15 @@
 				AB9E81F12803802500764FBA /* Find_ArtApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		ABB09940282BD62700EB003A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABB0993A282BCEB400EB003A /* Filter.swift */,
+				ABB09934282AA71C00EB003A /* PersonsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

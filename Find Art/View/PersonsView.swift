@@ -11,7 +11,9 @@ import Combine
 struct PersonsView<VM: ViewModelProtocol>: View {
     
     @ObservedObject var model: VM
+    @State var filterSettingsIsPresented: Bool = false
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var filter: Filter
     
     init(model: VM) {
         self.model = model
@@ -20,7 +22,7 @@ struct PersonsView<VM: ViewModelProtocol>: View {
     var body: some View {
         NavigationView {
             List {
-                Section() {
+                Section(header: Text(filter.header)) {
                     ForEach(self.model.persons) { person in
                         PersonCell(person: person)
                             .onAppear {
@@ -32,12 +34,20 @@ struct PersonsView<VM: ViewModelProtocol>: View {
                 }
                 .padding(2)
             }
+            .sheet(isPresented: self.$filterSettingsIsPresented) {
+                FilterSettingsView()
+                    .environmentObject(self.filter)
+            }
             .alert(item: self.$model.error) { error in
                 Alert(title: Text("Network error"),
                       message: Text(error.localizedDescription),
                       dismissButton: .cancel())
             }
             .navigationBarTitle(Text("Persons"))
+            .navigationBarItems(trailing:
+                                    Button("Filter") {
+                self.filterSettingsIsPresented = true
+            })
             .onAppear {
                 model.fetchPersons()
             }
