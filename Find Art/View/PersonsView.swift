@@ -49,7 +49,13 @@ struct PersonsView<VM: ViewModelProtocol>: View {
                 self.filterSettingsIsPresented = true
             })
             .onAppear {
+                if model.filterTags.isEmpty {
                 model.fetchPersons()
+                } else {
+                    model.currentPage = 0
+                    model.persons = []
+                    model.fetchPersons()
+                }
             }
         }
     }

@@ -10,9 +10,10 @@ import SwiftUI
 
 protocol ViewModelProtocol: ObservableObject {
     
-    var persons: [Person] { get }
+    var persons: [Person] { get set }
     var error: NetworkError? { get set }
     var filterTags: [CultureTag]  { get set }
+    var currentPage: Int { get set }
     var membersListFull: Bool { get set }
     func loadMoreContent()
     func fetchPersons()
@@ -21,27 +22,14 @@ protocol ViewModelProtocol: ObservableObject {
 
 class PersonsViewModel: ViewModelProtocol {
     
-    @Published private var allPersons: [Person] = []
+    @Published var persons: [Person] = []
     @Published var error: NetworkError? = nil
     @Published var filterTags: [CultureTag] = []
     
     private var apiClient = APIClient()
-    private var currentPage: Int = 0
+    var currentPage: Int = 0
     var membersListFull = false
     private var subscriptions: Set<AnyCancellable> = []
-    
-    var persons: [Person] {
-        guard !filterTags.isEmpty else {
-            return allPersons
-        }
-        
-        return allPersons
-            .filter { (person) -> Bool in
-                return filterTags.reduce(false) { (isMatch, tag) -> Bool in
-                    self.checkMatching(person: person, for: tag)
-                }
-            }
-    }
     
     //MARK: - PAGINATION
     func loadMoreContent(){
@@ -52,8 +40,11 @@ class PersonsViewModel: ViewModelProtocol {
     
     //MARK: - API CALL
     func fetchPersons() {
-        apiClient
-            .page(num: currentPage + 1)
+        let publisher = filterTags.isEmpty
+            ? apiClient.page(num: currentPage + 1)
+            : apiClient.page(num: currentPage + 1, q: filterTags.map { $0.rawValue }.joined(separator: ","))
+
+        publisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
@@ -62,7 +53,7 @@ class PersonsViewModel: ViewModelProtocol {
                 }
             }, receiveValue: { [weak self] page in
                 guard let self = self else { return }
-                self.allPersons.append(contentsOf: page.records)
+                self.persons.append(contentsOf: page.records)
                 self.currentPage += 1
                 self.error = nil
                 if page.records.count < page.info.totalrecordsperquery {
@@ -70,30 +61,5 @@ class PersonsViewModel: ViewModelProtocol {
                 }
             })
             .store(in: &subscriptions)
-    }
-    
-    //MARK: - FILTER
-    private func checkMatching(person: Person, for tag: CultureTag) -> Bool {
-        
-            apiClient
-                .page(num: currentPage + 1)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { [weak self] completion in
-                    guard let self = self else { return }
-                    if case .failure(let error) = completion {
-                        self.error = error
-                    }
-                }, receiveValue: { [weak self] page in
-                    guard let self = self else { return }
-                    self.allPersons.append(contentsOf: page.records)
-                    self.currentPage += 1
-                    self.error = nil
-                    if page.records.count < page.info.totalrecordsperquery {
-                        self.membersListFull = true
-                    }
-                })
-                .store(in: &subscriptions)
-            
-            return person.culture?.lowercased() == tag.rawValue.lowercased()
     }
 }
